@@ -10,11 +10,13 @@ pygame.display.init()
 # Window
 WIDTH, HEIGHT = pygame.display.Info().current_w, pygame.display.Info().current_h
 FPS = 60
-title = "Smart NPC CS27"
+TITLE = "Smart NPC CS27"
 
 # Colors
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+GREY = (120, 120, 120)
+DARK_GREY = (45, 45, 45)
 RED = (255,0,0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
