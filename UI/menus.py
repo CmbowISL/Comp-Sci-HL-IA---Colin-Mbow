@@ -23,7 +23,7 @@ class Menu:
         self.title_y = title_y
         self.widgets = []
         self.next_y = first_widget_y
-        self._shade = None
+        self._shade = None 
 
     def add_button(self, text, command):
         self.widgets.append(Button(text, (WIDTH // 2, self.next_y), command,
