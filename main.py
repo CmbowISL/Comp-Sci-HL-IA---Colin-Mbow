@@ -3,6 +3,9 @@
 import pygame
 import game_configs
 from UI import menus
+from UI import renderer
+from game import levels
+from game.world import World
 
 
 # Initial stuff:
@@ -35,16 +38,45 @@ dt = 0
 
 # Game loop
 while running:
+    command = None # What was clicked/pressed this frame
+
     # Events have to be read every frame or the window won't show/respond
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif state == PLAYING:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: # Esc pauses the game
+                command = "pause"
+        else:
+            clicked = menu.handle_event(event) # For buttons
+            if clicked is not None:
+                command = clicked
 
-        command = menu.handle_event(event)
-        if command == "quit":
-            running = False
+    # Change state depending on what was clicked/pressed:
+    if command == "start":
+        world = World(levels.LEVEL_1) # Builds the map
+        state = PLAYING
+    elif command == "pause":
+        menu = menus.pause_menu(fonts)
+        state = PAUSED
+    elif command == "resume":
+        state = PLAYING
+    elif command == "main_menu":
+        world = None
+        menu = menus.main_menu(fonts)
+        state = MAIN_MENU
+    elif command == "quit":
+        running = False
 
-    menu.draw(screen)
+    # Update:
+    if state == PLAYING:
+        world.update(dt)
+
+    # Draw:
+    if world is not None:
+        renderer.draw_world(screen, world)
+    if state != PLAYING:
+        menu.draw(screen) # Pause menu makes the map behind it darker
 
     pygame.display.flip()
     dt = clock.tick(game_configs.FPS) / 1000 # Seconds since last frame

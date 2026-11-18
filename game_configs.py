@@ -8,7 +8,7 @@ import pygame
 pygame.display.init()
 
 # Window
-WIDTH, HEIGHT = pygame.display.Info().current_w, pygame.display.Info().current_h
+WIDTH, HEIGHT = pygame.display.Info().current_w, pygame.display.Info().current_h # Size of the screen, can be changed to any size and the map will fit
 FPS = 60
 TITLE = "Smart NPC CS27"
 
@@ -23,3 +23,4 @@ BLUE = (0,0,255)
 
 BG_color = WHITE
 CH_color = BLACK
+WALL_color = DARK_GREY
