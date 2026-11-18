@@ -7,7 +7,7 @@ Walls are (x, y, width, height)
 
 LEVEL_1 = {
     "name": "Arena",
-    "player_spawn": (0.1, 0.5), # Not used yet, for when the player is added
+    "player_spawn": (0.1, 0.5), # Where the player starts
     "npc_spawns": [(0.9, 0.5)], # Not used yet, for when the NPC is added
     "walls": [
         (0.467, 0.384, 0.066, 0.232), # Middle pillar

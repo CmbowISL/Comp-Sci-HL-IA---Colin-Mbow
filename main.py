@@ -79,6 +79,6 @@ while running:
         menu.draw(screen) # Pause menu makes the map behind it darker
 
     pygame.display.flip()
-    dt = clock.tick(game_configs.FPS) / 1000 # Seconds since last frame
+    dt = min(clock.tick(game_configs.FPS) / 1000, 0.05) # Seconds since last frame, capped so a lag spike can't make the player skip through a wall
 
 pygame.quit()
